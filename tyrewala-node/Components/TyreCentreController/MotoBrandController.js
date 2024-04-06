@@ -5,9 +5,9 @@ const db = require("../../../db");
 router.get("/getMotoBrandModels", async (req, res) => {
   try {
     const dbInstance = await db.connectDatabase();
-    const db1 = await dbInstance.getDb();
-    const motoBrandsData = await db1.collection("moto_brands");
-    const motoModelsData = await db1.collection("moto_models");
+    const dbConnection = await dbInstance.getDb();
+    const motoBrandsData = await dbConnection.collection("moto_brands");
+    const motoModelsData = await dbConnection.collection("moto_models");
     const motoBrands = await motoBrandsData.find().toArray();
     const motoModels = await motoModelsData.find().toArray();
     // console.log("MOdels :: ", motoModels);

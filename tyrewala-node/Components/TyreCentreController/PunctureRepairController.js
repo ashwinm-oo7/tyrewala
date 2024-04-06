@@ -21,8 +21,8 @@ router.get("/getPunctureRepairList", async (req, res) => {
 
     const dbInstance = await db.connectDatabase();
 
-    const db1 = await dbInstance.getDb();
-    const punctureCollection = db1.collection("punctureRepair");
+    const dbConnection = await dbInstance.getDb();
+    const punctureCollection = dbConnection.collection("punctureRepair");
 
     const punctureList = await punctureCollection.find({ puncture }).toArray();
 
@@ -37,11 +37,6 @@ router.get("/getAllStatusStr", async (req, res) => {
   try {
     // Retrieve all status strings from the Constant module
     const statusStr = Constant.getAllStatusStr();
-    const dbInstance = await db.connectDatabase();
-
-    const db1 = await dbInstance.getDb();
-    const punctureCollection = db1.collection("punctureRepair");
-
     // Send the status strings as a response
     res.status(200).json(statusStr);
   } catch (error) {
@@ -55,8 +50,8 @@ router.get("/getPunctureRepairByMobileList/:mobile", async (req, res) => {
     const { mobile } = req.params;
     const dbInstance = await db.connectDatabase();
 
-    const db1 = await dbInstance.getDb();
-    const punctureCollection = db1.collection("punctureRepair");
+    const dbConnection = await dbInstance.getDb();
+    const punctureCollection = dbConnection.collection("punctureRepair");
     const punctureRepairs = await punctureCollection
       .find({ mobileNumber: mobile })
       .toArray();
@@ -79,8 +74,8 @@ router.put("/updateRepairStatus/:id/:status", async (req, res) => {
     // console.log(id, "IDS", status, "STATUS");
 
     const dbInstance = await db.connectDatabase();
-    const db1 = await dbInstance.getDb();
-    const punctureCollection = db1.collection("punctureRepair");
+    const dbConnection = await dbInstance.getDb();
+    const punctureCollection = dbConnection.collection("punctureRepair");
 
     // Find and update the puncture repair document by its ID
     const updatedRepair = await punctureCollection.findOneAndUpdate(
@@ -116,8 +111,8 @@ router.post("/addPuncture", async (req, res) => {
 
     const dbInstance = await db.connectDatabase();
 
-    const db1 = await dbInstance.getDb();
-    const customerCollection = db1.collection("punctureRepair");
+    const dbConnection = await dbInstance.getDb();
+    const customerCollection = dbConnection.collection("punctureRepair");
     const savedPuncture = await customerCollection.insertOne(newPunctureRepair);
 
     // console.log(savedPuncture, "savePuncturess ");
@@ -147,8 +142,8 @@ router.put("/updateAmout/:id/:amt", async (req, res) => {
     const objectId = new ObjectId(id);
 
     const dbInstance = await db.connectDatabase();
-    const db1 = await dbInstance.getDb();
-    const punctureCollection = db1.collection("punctureRepair");
+    const dbConnection = await dbInstance.getDb();
+    const punctureCollection = dbConnection.collection("punctureRepair");
 
     // Find and update the puncture repair document by its ID
     const updatedRepair = await punctureCollection.updateOne(

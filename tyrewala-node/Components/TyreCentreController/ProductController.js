@@ -91,8 +91,8 @@ router.post("/add", async (req, res) => {
     // console.log("PRODUCTTT : ", newProduct);
 
     const dbInstance = await db.connectDatabase();
-    const db1 = await dbInstance.getDb();
-    const productCollection = db1.collection("product");
+    const dbConnection = await dbInstance.getDb();
+    const productCollection = dbConnection.collection("product");
     const savedProduct = await productCollection.insertOne(newProduct);
 
     // console.log("PRODUCT: ", savedProduct);
@@ -113,8 +113,8 @@ router.get("/getAllProducts", async (req, res) => {
 
     // Query all SUBcategories from the database
     const dbInstance = await db.connectDatabase();
-    const db1 = await dbInstance.getDb();
-    const productCollection = db1.collection("product");
+    const dbConnection = await dbInstance.getDb();
+    const productCollection = dbConnection.collection("product");
 
     // Send the retrieved categories as JSON response
     const allProducts = await productCollection.find({}).toArray();
@@ -140,10 +140,10 @@ router.get("/getProductById/:productIdToUpdate", async (req, res) => {
     const dbInstance = await db.connectDatabase();
 
     // Get the database instance
-    const db1 = await dbInstance.getDb();
+    const dbConnection = await dbInstance.getDb();
 
     // Get the collection where products are stored
-    const productCollection = db1.collection("product");
+    const productCollection = dbConnection.collection("product");
 
     // Find the product by its ID
     const product = await productCollection.findOne({
@@ -174,8 +174,8 @@ router.put("/update/:productId", async (req, res) => {
 
     console.log("PRODUCTUPDATE : ", productIdToUpdate);
     const dbInstance = await db.connectDatabase();
-    const db1 = await dbInstance.getDb();
-    const productCollection = db1.collection("product");
+    const dbConnection = await dbInstance.getDb();
+    const productCollection = dbConnection.collection("product");
     updatedProductData.updated_at = new Date().toLocaleString("en-IN", {
       timeZone: "Asia/Kolkata",
     });

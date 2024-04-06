@@ -23,8 +23,8 @@ router.post("/signup", async (req, res) => {
     // Access the MongoDB database instance
     const dbInstance = await db.connectDatabase();
 
-    const db1 = await dbInstance.getDb();
-    const customerCollection = db1.collection("customer");
+    const dbConnection = await dbInstance.getDb();
+    const customerCollection = dbConnection.collection("customer");
 
     // Perform database operation to create a new customer
     const savedCustomer = await customerCollection.insertOne(entity);
@@ -49,8 +49,8 @@ router.post("/login", async (req, res) => {
     console.log("Successfully connected to the database");
 
     try {
-      const db1 = await dbInstance.getDb();
-      const customerCollection = db1.collection("customer");
+      const dbConnection = await dbInstance.getDb();
+      const customerCollection = dbConnection.collection("customer");
 
       // Now you can perform database operations using customerCollection
       const query = { email: email };

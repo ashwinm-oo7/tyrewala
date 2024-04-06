@@ -16,8 +16,8 @@ router.post("/add", async (req, res) => {
 
     // console.log("CATEGORYssss : ", newCategory);
     const dbInstance = await db.connectDatabase();
-    const db1 = await dbInstance.getDb();
-    const categoryCollection = db1.collection("category");
+    const dbConnection = await dbInstance.getDb();
+    const categoryCollection = dbConnection.collection("category");
     const savedCategory = await categoryCollection.insertOne(newCategory);
 
     // console.log("CATEGORYs : ", savedCategory);
@@ -48,8 +48,8 @@ router.get("/allCategory", async (req, res) => {
     const categoryys = req.body;
 
     const dbInstance = await db.connectDatabase();
-    const db1 = await dbInstance.getDb();
-    const categoryCollection = db1.collection("category");
+    const dbConnection = await dbInstance.getDb();
+    const categoryCollection = dbConnection.collection("category");
 
     const categories = await categoryCollection.find().toArray();
 
@@ -85,10 +85,10 @@ router.put("/update/:id", async (req, res) => {
     // console.log(id, "UPDATED", updatedData);
 
     const dbInstance = await db.connectDatabase();
-    const db1 = await dbInstance.getDb();
+    const dbConnection = await dbInstance.getDb();
 
     // Get the collection where subcategories or categories are stored based on the route
-    const collection = db1.collection("category");
+    const collection = dbConnection.collection("category");
 
     const result = await collection.updateOne(
       { _id: new ObjectId(id) },

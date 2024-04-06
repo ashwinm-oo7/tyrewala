@@ -24,8 +24,8 @@ router.post("/add", async (req, res) => {
 
     // console.log("BRANDADD : ", newBrand);
     const dbInstance = await db.connectDatabase();
-    const db1 = await dbInstance.getDb();
-    const brandCollection = db1.collection("brand");
+    const dbConnection = await dbInstance.getDb();
+    const brandCollection = dbConnection.collection("brand");
     const savedBrand = await brandCollection.insertOne(newBrand);
     // console.log("CATEGORYs : ", savedBrand);
 
@@ -48,8 +48,8 @@ router.get(
       // console.log("categoryName", categoryName);
 
       const dbInstance = await db.connectDatabase();
-      const db1 = await dbInstance.getDb();
-      const productCollection = db1.collection("brand");
+      const dbConnection = await dbInstance.getDb();
+      const productCollection = dbConnection.collection("brand");
 
       // Query all SUBcategories from the database
       const tyreBrand = await productCollection

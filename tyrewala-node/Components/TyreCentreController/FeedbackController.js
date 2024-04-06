@@ -12,8 +12,8 @@ router.get("/getAllFeedback", async (req, res) => {
     const categoryys = req.body;
 
     const dbInstance = await db.connectDatabase();
-    const db1 = await dbInstance.getDb();
-    const categoryCollection = db1.collection("feedback");
+    const dbConnection = await dbInstance.getDb();
+    const categoryCollection = dbConnection.collection("feedback");
 
     const categories = await categoryCollection.find().toArray();
 

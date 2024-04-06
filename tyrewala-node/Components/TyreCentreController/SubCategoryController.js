@@ -18,8 +18,8 @@ router.post("/add", async (req, res) => {
     });
     const dbInstance = await db.connectDatabase();
 
-    const db1 = await dbInstance.getDb();
-    const customerCollection = db1.collection("subcategory");
+    const dbConnection = await dbInstance.getDb();
+    const customerCollection = dbConnection.collection("subcategory");
     const savedSubcategory = await customerCollection.insertOne(newSubcategory);
     res.status(201).json(savedSubcategory);
   } catch (error) {
@@ -37,8 +37,8 @@ router.get(
       //   console.log("SUBCATEGORY", categoryName);
 
       const dbInstance = await db.connectDatabase();
-      const db1 = await dbInstance.getDb();
-      const subcategoryCollection = db1.collection("subcategory");
+      const dbConnection = await dbInstance.getDb();
+      const subcategoryCollection = dbConnection.collection("subcategory");
 
       // Query all categories from the database
       const subcategories = await subcategoryCollection
@@ -63,9 +63,9 @@ router.get(
 router.get("/allSubCategory", async (req, res) => {
   try {
     const dbInstance = await db.connectDatabase();
-    const db1 = await dbInstance.getDb();
+    const dbConnection = await dbInstance.getDb();
 
-    const subcategoryCollection = db1.collection("subcategory");
+    const subcategoryCollection = dbConnection.collection("subcategory");
     const allSubcategories = await subcategoryCollection.find({}).toArray();
 
     res.status(200).json(allSubcategories);
@@ -88,10 +88,10 @@ router.put("/update/:id", async (req, res) => {
 
     // Connect to the database
     const dbInstance = await db.connectDatabase();
-    const db1 = await dbInstance.getDb();
+    const dbConnection = await dbInstance.getDb();
 
     // Get the collection where categories are stored
-    const categoryCollection = db1.collection("subcategory");
+    const categoryCollection = dbConnection.collection("subcategory");
 
     // Update the category document
     const result = await categoryCollection.updateOne(
@@ -119,9 +119,9 @@ router.delete("/delete/:id", async (req, res) => {
     // console.log(id, "DELETEDs", updatedData);
 
     const dbInstance = await db.connectDatabase();
-    const db1 = await dbInstance.getDb();
+    const dbConnection = await dbInstance.getDb();
 
-    const subcategoryCollection = db1.collection("subcategory");
+    const subcategoryCollection = dbConnection.collection("subcategory");
 
     const result = await subcategoryCollection.deleteOne({
       _id: new ObjectId(id),
