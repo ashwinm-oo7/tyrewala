@@ -1,0 +1,16 @@
+/* about.css */
+.about {
+    /* Add any additional styles for the container div if needed */
+  }
+  
+  .aboutimg {
+    width: 99%; /* Ensures the image takes full width */
+    height: 45vh; /* Sets the height to 30% of the viewport height */
+  }
+  
+  .aboutimg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire container */
+  }
+  

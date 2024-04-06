@@ -1,0 +1,49 @@
+/* MyAccount.css */
+
+.my-account-container {
+  background-origin: padding-box;
+  background-color: #b3d5f9;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .my-account-container h2 {
+  padding-left: 29px;
+  }
+  .profile-details {
+    display: grid;
+    gap: 10px;
+  }
+  
+  .profile-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-item input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .update-profile-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  .update-profile-btn:hover {
+    background-color: #0056b3;
+  }
+  @media screen and (max-width: 768px){
+    
+  }

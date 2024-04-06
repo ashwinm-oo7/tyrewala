@@ -1,0 +1,60 @@
+.categories-container {
+  padding: 20px;
+}
+
+.add-category-form {
+  border: 1px solid #b34545;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.add-category-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.add-category-form input[type="text"],
+.add-category-form textarea {
+  width: calc(100% - 16px); /* Adjusted width to accommodate padding */
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-category-form button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  border: none; /* Removed button border */
+  border-radius: 5px; /* Added border-radius for button */
+  background-color: #007bff; /* Added background color */
+  color: #fff; /* Changed text color to white */
+  transition: background-color 0.3s ease; /* Added transition effect */
+}
+
+.add-category-form button:last-child {
+  margin-right: 0;
+}
+
+.add-category-form button:hover {
+  background-color: #007bff; /* Darker background color on hover */
+}
+
+.add-category-form span {
+  color: rgb(56, 69, 210);
+}
+
+/* Show the form when it's open */
+.add-category-form.open {
+  display: block;
+}
+
+.next-subcategory {
+  font-weight: bold;
+  color: blue;
+  text-decoration: underline;
+}
