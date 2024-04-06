@@ -13,7 +13,7 @@ const motoBrandSchema = new mongoose.Schema({
 const MotoBrand = mongoose.model("", motoBrandSchema);
 
 mongoose.connect(
-  "mongodb+srv://ashwinmaurya1997:Ruparelcolg%402045@cluster0.d7wnxkj.mongodb.net/tyrecentre?retryWrites=true&w=majority",
+  "mongodb+srv://ashwinmaurya1997:PASSWORD@cluster0.d7wnxkj.mongodb.net/tyrecentre?retryWrites=true&w=majority",
   {}
 );
 
